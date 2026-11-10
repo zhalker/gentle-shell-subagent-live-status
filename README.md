@@ -1,6 +1,8 @@
 # Inspect live subagent output
 
-A standalone Pi extension for Gentle Shell 4.7.0. Adds the model tool
+A Pi extension for Gentle Shell 4.7.0, published as
+[`@zhalker/gentle-shell-subagent-live-status`](https://www.npmjs.com/package/@zhalker/gentle-shell-subagent-live-status).
+Adds the model tool
 `subagent_live_status({task_id, tail_chars?})` without changing Gentle Shell,
 its tools, command execution, settings or timeouts. No npm dependencies.
 
@@ -59,13 +61,36 @@ for on-demand inspection. No timers, automatic polling or extra model calls.
 
 ## Install and test
 
-Run `node --test projects/subagent-live-status/tests/*.test.mjs` from the repo.
-Install with `node projects/subagent-live-status/install.mjs <absolute-agent-home> <absolute-gentle-pi-root>`.
+Install as a Pi package (recommended):
+
+```
+pi install npm:@zhalker/gentle-shell-subagent-live-status
+```
+
+Then run `/reload` in Pi or start a new session. The package entry
+(`extensions/index.ts`) resolves gentle-pi's presence API
+(`gentle-pi/lib/orchestrator-presence.ts`) inside the same agent `node_modules`
+tree at runtime. When gentle-pi is missing or has changed that internal file,
+the presence bridge degrades to `liveUnavailable:
+presence-bridge-not-configured` and the tool keeps answering with native
+status/result and child-log lookup data; it never breaks the package load.
+
+Manual installation without `pi install` still works:
+
+```
+node install.mjs <absolute-agent-home> <absolute-gentle-pi-root>
+```
+
 The installer creates only `extensions/subagent-live-status/`, refuses an existing
 target, and generates a static bridge for Pi's TypeScript loader. It needs an
 existing extensions directory. Installing requires authorization for that target.
 A failed copy can leave a partial new directory; the installer will refuse to
 replace it. Inspect it before choosing recovery; never delete it automatically.
+
+Run the suite with `npm test` (or `node --test tests/*.test.mjs`) from the
+repository root. Verified with Pi 1.5.0, gentle-pi 4.7.0 and Node 24.20 on
+Windows; the presence bridge is version-coupled to gentle-pi internals, so
+revalidate after a Gentle Shell or Pi update.
 
 ## Boundaries
 

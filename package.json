@@ -1,7 +1,47 @@
 {
-  "name": "pi-subagent-live-status",
-  "private": true,
+  "name": "@zhalker/gentle-shell-subagent-live-status",
+  "version": "0.1.0",
+  "description": "Pi extension adding the subagent_live_status tool: inspect a background Gentle Shell subagent on demand (status, running tool and command, bounded output, final result). No polling, no timers, no dependencies.",
+  "license": "MIT",
+  "author": "zhalker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhalker/gentle-shell-subagent-live-status.git"
+  },
+  "homepage": "https://github.com/zhalker/gentle-shell-subagent-live-status#readme",
+  "bugs": {
+    "url": "https://github.com/zhalker/gentle-shell-subagent-live-status/issues"
+  },
   "type": "module",
-  "scripts": { "test": "node --test tests/*.test.mjs" },
-  "pi": { "extensions": ["./index.js"] }
+  "keywords": [
+    "pi-package",
+    "pi",
+    "gentle-shell",
+    "gentle-ai",
+    "subagents",
+    "pi-extension"
+  ],
+  "files": [
+    "index.js",
+    "extensions",
+    "install.mjs",
+    "tests",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/index.ts"
+    ]
+  }
 }
