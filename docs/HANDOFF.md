@@ -18,7 +18,7 @@ There is no polling, process control or automatic timeout. See
 ## Contents and provenance
 - `projects/subagent-live-status/`: original source, installer, package manifest, existing README,
   and the complete eight-file test suite.
-- Source snapshot: company-knowledge, branch `feat/subagent-live-status-command`,
+- Source snapshot: an internal source repository, branch `feat/subagent-live-status-command`,
   latest source commit `9b42207`. No Git history, session logs, installed
   extensions, credentials, npm tokens or private task records are included.
 - Previously exercised in Pi 1.5.0 with gentle-pi / Gentle Shell 4.7.0.
