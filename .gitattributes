@@ -1,0 +1,2 @@
+# Repo files stay LF on every checkout so the extension and fixtures are byte-stable.
+* text=auto eol=lf
